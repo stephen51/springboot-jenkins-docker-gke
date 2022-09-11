@@ -1,11 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-docker-kubernetes-gke-deployment-loadbalancer
+  labels:
+    app: jenkins-docker-kubernetes-gke-app-loadbalancer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-docker-kubernetes-gke-app-loadbalancer
+  template:
+    metadata:
+      labels:
+        app: jenkins-docker-kubernetes-gke-app-loadbalancer
+    spec:
+      containers:
+        - name: jenkins-docker-kubernetes-gke-app-loadbalancer
+          image: stephenrajisac/jenkins-docker-kubernetes-gke:tagversion
+          ports:
+            - containerPort: 8080
+
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: myapp
+  name: jenkins-docker-kubernetes-gke-service-loadbalancer
 spec:
   type: LoadBalancer
   selector:
-    app: myapp
+    app: jenkins-docker-kubernetes-gke-app-loadbalancer
   ports:
     - protocol: TCP
       port: 80
