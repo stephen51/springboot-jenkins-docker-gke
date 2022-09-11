@@ -17,4 +17,8 @@ class JenkinsDockerKubernetesGkeApplicationTests {
 		Assert.assertEquals("welcome to Jenkins,Docker,Kubernetes and GKE",testController.welcome()); ;
 	}
 
+	@Test
+	void testGithubWebHook() {
+		Assert.assertEquals("Github webhook is working fine",testController.test()); ;
+	}
 }

@@ -10,4 +10,9 @@ public class TestController {
     public String welcome(){
         return "welcome to Jenkins,Docker,Kubernetes and GKE";
     }
+
+    @GetMapping("/test")
+    public String test(){
+        return "Github webhook is working fine";
+    }
 }
