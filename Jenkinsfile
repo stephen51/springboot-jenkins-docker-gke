@@ -31,12 +31,6 @@ pipeline {
 		    }
 	    }
 
-	    stage('SonarQube Analysis') {
-            withSonarQubeEnv() {
-              sh "mvn clean verify sonar:sonar -Dsonar.projectKey=springboot-jenkins-docker-gke"
-            }
-          }
-
 	    stage('Build Docker Image') {
 		    steps {
 			    sh 'whoami'
