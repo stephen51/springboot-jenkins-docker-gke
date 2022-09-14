@@ -33,7 +33,10 @@ pipeline {
 
 	    stage('SonarQube Analysis') {
             steps {
-              sh "mvn clean verify sonar:sonar -Dsonar.projectKey=springboot-jenkins-docker-gke"
+                sh 'mvn clean verify sonar:sonar \
+                  -Dsonar.projectKey=springboot-jenkins-docker-gke \
+                  -Dsonar.host.url=http://34.125.190.168:9000 \
+                  -Dsonar.login=sqp_4a43e2ecddc3b7034200d763a11ae8c7ee47c143'
             }
         }
 
