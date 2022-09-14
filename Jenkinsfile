@@ -32,9 +32,8 @@ pipeline {
 	    }
 
 	    stage('SonarQube Analysis') {
-            def mvn = tool 'Maven_Latest';
             withSonarQubeEnv() {
-              sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=springboot-jenkins-docker-gke"
+              sh "mvn clean verify sonar:sonar -Dsonar.projectKey=springboot-jenkins-docker-gke"
             }
           }
 
